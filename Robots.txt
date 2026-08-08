@@ -1,3 +1,15 @@
-User-agent: *
+# Google: full access
+User-agent: Googlebot
 Allow: /
-Sitemap: https://example.com/sitemap.xml
+
+# Bing: allow but request slower crawl
+User-agent: bingbot
+Allow: /
+Crawl-delay: 10
+
+# Other bots: block known bad paths
+User-agent: *
+Disallow: /admin/
+Disallow: /.git/
+
+Sitemap: https://your-domain.example/sitemap.xml
