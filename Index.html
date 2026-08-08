@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="IWAN ALPHA XAU — Institutional Decision Engine & Cockpit Interface untuk Perdagangan Emas (XAUUSD)" />
+  <title>IWAN ALPHA XAU — Trading System & Cockpit</title>
+
+  <!-- Content Security Policy (meta). Jika TradingView tidak muncul, baca bagian troubleshooting di bawah. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https://s3.tradingview.com https://s.tradingview.com https://www.tradingview.com https://cdn.tailwindcss.com https://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com data:; frame-src https://s.tradingview.com https://www.tradingview.com https://tradingview.com; img-src 'self' data: https://s3.tradingview.com https://www.tradingview.com; connect-src 'self' https://www.tradingview.com wss: https:;">
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Tailwind CSS CDN (dev-friendly). For production consider building Tailwind CSS and shipping a minified CSS file. -->
+  <script src="https://cdn.tailwindcss.com" defer></script>
+
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            cockpit: {
+              bg: '#0b0f19',
+              card: '#111827',
+              border: '#1f2937',
+              gold: '#f59e0b',
+              green: '#10b981',
+              red: '#ef4444',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root { color-scheme: dark; }
+    body { background-color: #0b0f19; color: #f3f4f6; }
+    .glow-gold { box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.3); }
+    .glow-green { box-shadow: 0 0 20px -5px rgba(16, 185, 129, 0.3); }
+
+    /* Better visible focus for keyboard users */
+    :focus {
+      outline: 3px solid rgba(250, 204, 21, 0.18);
+      outline-offset: 2px;
+    }
+    .icon-btn { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; }
+    .skip-link {
+      position:absolute; left:0; top:-40px; background:#111827; color:#fff; padding:8px 12px; z-index:999; transition:top .2s;
+    }
+    .skip-link:focus { top:12px; }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-amber-500 selection:text-black pb-10">
+
+  <!-- Skip to main content -->
+  <a class="skip-link" href="#main" aria-label="Lewati ke konten utama">Lewati ke konten utama</a>
+
+  <header>
+    <nav class="border-b border-cockpit-border bg-cockpit-bg/90 backdrop-blur-md sticky top-0 z-50" role="navigation" aria-label="Primary Navigation">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+          <span aria-hidden="true" class="text-xl">✈️</span>
+          <span class="font-bold text-lg tracking-wider text-white font-mono">
+            IWAN <span class="text-amber-500">ALPHA</span> XAU
+          </span>
+        </div>
+
+        <!-- GANTI_USERNAME_TELEGRAM -> ganti dengan username Telegram Anda -->
+        <a href="https://t.me/GANTI_USERNAME_TELEGRAM" target="_blank" rel="noopener noreferrer" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 icon-btn" aria-label="Buka Group Telegram (link eksternal)">
+          <i class="fa-brands fa-telegram text-sm" aria-hidden="true"></i>
+          <span>Telegram</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" role="main" class="max-w-6xl mx-auto px-4">
+    <section class="pt-6 pb-6 text-center" aria-labelledby="hero-title">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-[11px] font-mono font-semibold mb-3">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
+        MODULE 01 • ALPHA CORE ONLINE
+      </div>
+
+      <h1 id="hero-title" class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-2">
+        No Guess. <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-500">Only Evidence.</span>
+      </h1>
+
+      <p class="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto mb-6">
+        Institutional Decision Engine & Cockpit Interface untuk Perdagangan Emas (XAUUSD).
+      </p>
+    </section>
+
+    <section aria-label="Dashboard utama">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+        <article class="lg:col-span-2 bg-cockpit-card border border-cockpit-border rounded-2xl p-3 overflow-hidden shadow-2xl" aria-labelledby="live-market-heading">
+          <div class="flex justify-between items-center mb-2 px-1">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-chart-line text-amber-500 text-xs" aria-hidden="true"></i>
+              <span id="live-market-heading" class="font-mono font-bold text-white text-xs">XAUUSD LIVE MARKET</span>
+            </div>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">M15 REAL-TIME</span>
+          </div>
+
+          <!-- TradingView Widget BEGIN -->
+          <div class="tradingview-widget-container rounded-xl overflow-hidden" style="height:450px;width:100%" role="region" aria-label="Grafik pasar XAUUSD">
+            <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+            {
+              "autosize": true,
+              "symbol": "OANDA:XAUUSD",
+              "interval": "15",
+              "timezone": "Asia/Jakarta",
+              "theme": "dark",
+              "style": "1",
+              "locale": "id",
+              "enable_publishing": false,
+              "hide_top_toolbar": false,
+              "hide_legend": false,
+              "save_image": false,
+              "calendar": false,
+              "hide_volume": true,
+              "support_host": "https://www.tradingview.com"
+            }
+            </script>
+          </div>
+          <!-- TradingView Widget END -->
+        </article>
+
+        <aside class="bg-cockpit-card border border-cockpit-border rounded-2xl p-5 text-left glow-green shadow-2xl relative overflow-hidden" aria-labelledby="cockpit-heading">
+          <div class="absolute top-0 right-0 bg-emerald-500/10 text-emerald-400 text-[10px] font-mono font-bold px-3 py-1 rounded-bl-lg border-b border-l border-emerald-500/30">
+            LIVE SYSTEM
+          </div>
+
+          <div class="flex items-center gap-2 border-b border-slate-800 pb-3 mb-4">
+            <span aria-hidden="true" class="text-xl">✈️</span>
+            <div>
+              <h3 id="cockpit-heading" class="font-mono font-bold text-amber-400 text-sm">IWAN ALPHA COCKPIT</h3>
+              <p class="text-[10px] text-slate-500 font-mono">XAUUSD HIE & AI SCORING</p>
+            </div>
+          </div>
+
+          <div class="space-y-3 font-mono text-xs mb-6">
+            <div class="flex justify-between items-center bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              <span class="text-slate-400">STATE</span>
+              <span role="status" aria-live="polite" class="bg-emerald-500 text-slate-950 font-extrabold px-2.5 py-0.5 rounded text-[11px] animate-pulse">
+                TAKE OFF (BUY)
+              </span>
+            </div>
+
+            <div class="flex justify-between items-center bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              <span class="text-slate-400">BIAS / SCORE</span>
+              <span class="text-amber-400 font-bold">BULLISH (85/100)</span>
+            </div>
+
+            <div class="flex justify-between items-center bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              <span class="text-slate-400">SESSION</span>
+              <span class="text-emerald-400 font-bold">LONDON / NY 🔥</span>
+            </div>
+
+            <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              <div class="text-slate-400 mb-1 text-[10px]">CONFLUENCE EVIDENCE</div>
+              <div class="text-slate-300 text-[11px]">HTF Trend Aligned • Structure BOS • Liquidity Swept</div>
+            </div>
+          </div>
+
+          <a href="https://t.me/GANTI_USERNAME_TELEGRAM" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:opacity-90 text-slate-950 font-bold py-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2 glow-gold icon-btn" aria-label="Bergabung dengan grup Telegram">
+            <i class="fa-brands fa-telegram text-base" aria-hidden="true"></i>
+            <span>Join Group Telegram</span>
+          </a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-12 border-t border-cockpit-border pt-6 text-center text-slate-500 text-xs" role="contentinfo">
+    <p>© 2026 IWAN ALPHA XAU Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
