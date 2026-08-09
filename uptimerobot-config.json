@@ -1,0 +1,45 @@
+{
+  "uptimeRobot": {
+    "description": "Configuration guide untuk UptimeRobot monitoring",
+    "monitorType": "HTTP(s)",
+    "monitoringEndpoints": [
+      {
+        "name": "Main Site Health Check",
+        "url": "https://your-domain.com/health",
+        "requestType": "GET",
+        "httpMethod": "HTTP",
+        "alertContacts": "telegram",
+        "interval": 300,
+        "description": "Monitor main health endpoint"
+      },
+      {
+        "name": "Ping Check",
+        "url": "https://your-domain.com/ping",
+        "requestType": "GET",
+        "httpMethod": "HTTP",
+        "interval": 300,
+        "description": "Simple uptime ping"
+      }
+    ],
+    "setup_steps": [
+      "1. Go to uptimerobot.com and create account",
+      "2. Click 'Add New Monitor'",
+      "3. Select 'HTTP(s)' as monitor type",
+      "4. Enter URL: https://your-domain.com/health",
+      "5. Set check interval to 5 minutes (300 seconds)",
+      "6. Enable notifications via Telegram",
+      "7. Click 'Create Monitor'",
+      "8. Repeat for /ping endpoint"
+    ],
+    "responseExpectations": {
+      "statusCode": 200,
+      "healthEndpointResponse": {
+        "status": "online",
+        "uptime": "number in seconds",
+        "timestamp": "ISO 8601 datetime",
+        "version": "1.0.0"
+      }
+    },
+    "notes": "UptimeRobot akan mengirim notifikasi ke Telegram ketika server down. Pastikan Telegram bot sudah dikonfigurasi."
+  }
+}
